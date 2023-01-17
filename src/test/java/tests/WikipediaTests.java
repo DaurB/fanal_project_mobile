@@ -33,39 +33,17 @@ public class WikipediaTests extends TestBase {
         back();
         step("Type search", () -> {
             $(AppiumBy.accessibilityId("Search Wikipedia")).click();
-            $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Metallica");
+            $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Iron Maiden");
         });
         step("Verify content found", () ->
                 $$(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_title")).shouldHave(sizeGreaterThan(0)));
         step("Choose page", () -> {
-            $(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_title")).click();
-            back();
-            $(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_title")).click();
+            $$(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_title")).findBy(text("Iron Maiden")).click();
+            $(AppiumBy.className("android.webkit.WebView")).click();
         });
         step("Verify opened page", () ->
-                $(AppiumBy.className("android.webkit.WebView")).shouldHave(text("Metallica")));
+                $(AppiumBy.className("android.widget.TextView")).shouldHave(text("Iron Maiden")));
     }
-
-    @Test
-    @DisplayName("Открытие статьи через поиск в Wikipedia")
-    void searchArticleTest() {
-        back();
-        step("Нажать на Search Wikipedia", () -> {
-            $(AppiumBy.id("org.wikipedia.alpha:id/search_container")).click();
-        });
-        step("Ввести Twin Peaks", () -> {
-            $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Twin Peaks");
-            $$(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_title")).shouldHave(sizeGreaterThan(0));
-        });
-        step("Открыть статью Twin Peaks", () -> {
-            $$(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_title")).findBy(text("Twin Peaks")).click();
-            $(AppiumBy.className("android.webkit.WebView")).click();
-            $(AppiumBy.className("android.widget.TextView")).shouldHave(text("Twin Peaks"));
-        });
-    }
-
-
-
 
     @Owner("Bibol Dauren")
     @Test
@@ -91,20 +69,26 @@ public class WikipediaTests extends TestBase {
             $(AppiumBy.id("org.wikipedia.alpha:id/primaryTextView"))
                     .shouldHave(text("The Free Encyclopedia …in over 300 languages"));
         });
+
         step("Click on 'Сontinue'", () ->
                 $(AppiumBy.id("org.wikipedia.alpha:id/fragment_onboarding_forward_button")).click());
+
         step("Check 'New ways to explore' text is visible", () -> {
             $(AppiumBy.id("org.wikipedia.alpha:id/primaryTextView"))
                     .shouldHave(text("New ways to explore"));
         });
+
         step("Click on 'Сontinue'", () ->
                 $(AppiumBy.id("org.wikipedia.alpha:id/fragment_onboarding_forward_button")).click());
+
         step("Check 'Reading lists with sync' text is visible", () -> {
             $(AppiumBy.id("org.wikipedia.alpha:id/primaryTextView"))
                     .shouldHave(text("Reading lists with sync"));
         });
+
         step("Click on 'Сontinue'", () ->
                 $(AppiumBy.id("org.wikipedia.alpha:id/fragment_onboarding_forward_button")).click());
+
         step("Check 'Send anonymous data' text is visible", () -> {
             $(AppiumBy.id("org.wikipedia.alpha:id/primaryTextView"))
                     .shouldHave(text("Send anonymous data"));

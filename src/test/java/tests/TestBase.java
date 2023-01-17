@@ -22,7 +22,7 @@ public class TestBase {
         if (testType == null) {
             testType = "local";
         }
-        // gradle clean test -DtestType=browserstack/local
+
         switch (testType) {
             case "local":
                 Configuration.browser = LocalMobileDriver.class.getName();
