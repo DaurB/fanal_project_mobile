@@ -1,15 +1,15 @@
 package helpers;
 
-import config.BrowserstackConfig;
+import config.RemoteConfig;
 import org.aeonbits.owner.ConfigFactory;
 
 import static io.restassured.RestAssured.given;
 import static java.lang.String.format;
 
 public class BrowserStack {
+    static RemoteConfig config = ConfigFactory.create(RemoteConfig.class, System.getProperties());
 
     public static String getVideoUrl(String sessionId) {
-        BrowserstackConfig config = ConfigFactory.create(BrowserstackConfig.class, System.getProperties());
         String url = format("https://api.browserstack.com/app-automate/sessions/%s.json", sessionId);
 
         return given()

@@ -19,6 +19,7 @@ import static io.appium.java_client.remote.AutomationName.ANDROID_UIAUTOMATOR2;
 import static org.apache.commons.io.FileUtils.copyInputStreamToFile;
 
 public class LocalMobileDriver implements WebDriverProvider {
+    LocalConfig config = ConfigFactory.create(LocalConfig.class, System.getProperties());
 
     public static URL getAppiumServerUrl() {
         try {
@@ -31,7 +32,6 @@ public class LocalMobileDriver implements WebDriverProvider {
     @SneakyThrows
     @Override
     public WebDriver createDriver(Capabilities capabilities) {
-        LocalConfig config = ConfigFactory.create(LocalConfig.class, System.getProperties());
         UiAutomator2Options options = new UiAutomator2Options();
         options.merge(capabilities);
 
@@ -47,7 +47,6 @@ public class LocalMobileDriver implements WebDriverProvider {
     }
 
     private String getAppPath() {
-        //file should be moved from wiki github
         String appUrl = "https://github.com/wikimedia/apps-android-wikipedia/" +
                 "releases/download/latest/app-alpha-universal-release.apk";
         String appPath = "src/test/resources/apps/app-alpha-universal-release.apk";

@@ -1,9 +1,9 @@
 package tests;
 
 import io.appium.java_client.AppiumBy;
+import io.qameta.allure.Owner;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.net.MalformedURLException;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
@@ -13,23 +13,27 @@ import static io.qameta.allure.Allure.step;
 
 public class SearchTests extends TestBase {
 
+    @Owner("Bibol Dauren")
     @Test
-    void successSearchTest() throws MalformedURLException, InterruptedException {
-        step("Skip onboarding pages", () -> back());
+    @DisplayName("Success search")
+    void successSearchTest() {
+        back();
         step("Type search", () -> {
             $(AppiumBy.accessibilityId("Search Wikipedia")).click();
-            $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Java");
+            $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Python");
         });
         step("Verify content found", () ->
                 $$(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_title")).shouldHave(sizeGreaterThan(0)));
     }
 
+    @Owner("Bibol Dauren")
     @Test
-    void openArticle() throws MalformedURLException, InterruptedException {
-        step("Skip onboarding pages", () -> back());
+    @DisplayName("Open article")
+    void openArticleTest() {
+        back();
         step("Type search", () -> {
             $(AppiumBy.accessibilityId("Search Wikipedia")).click();
-            $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Selenide");
+            $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Metallica");
         });
         step("Verify content found", () ->
                 $$(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_title")).shouldHave(sizeGreaterThan(0)));
@@ -39,12 +43,14 @@ public class SearchTests extends TestBase {
             $(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_title")).click();
         });
         step("Verify opened page", () ->
-                $(AppiumBy.className("android.webkit.WebView")).shouldHave(text("Selenide")));
+                $(AppiumBy.className("android.webkit.WebView")).shouldHave(text("Metallica")));
     }
 
+    @Owner("Bibol Dauren")
     @Test
-    void addLanguage() throws MalformedURLException, InterruptedException {
-        step("Skip onboarding pages", () -> back());
+    @DisplayName("Add language")
+    void addLanguageTest() {
+        back();
         step("Type search", () ->
                 $(AppiumBy.accessibilityId("Search Wikipedia")).click());
         step("Add new language", () -> {

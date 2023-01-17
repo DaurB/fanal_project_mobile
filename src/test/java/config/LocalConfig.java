@@ -19,5 +19,4 @@ public interface LocalConfig extends Config {
     @Key("osVersion")
     @DefaultValue("11.0")
     String osVersion();
-
 }
