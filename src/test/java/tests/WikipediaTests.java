@@ -46,6 +46,27 @@ public class WikipediaTests extends TestBase {
                 $(AppiumBy.className("android.webkit.WebView")).shouldHave(text("Metallica")));
     }
 
+    @Test
+    @DisplayName("Открытие статьи через поиск в Wikipedia")
+    void searchArticleTest() {
+        back();
+        step("Нажать на Search Wikipedia", () -> {
+            $(AppiumBy.id("org.wikipedia.alpha:id/search_container")).click();
+        });
+        step("Ввести Twin Peaks", () -> {
+            $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Twin Peaks");
+            $$(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_title")).shouldHave(sizeGreaterThan(0));
+        });
+        step("Открыть статью Twin Peaks", () -> {
+            $$(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_title")).findBy(text("Twin Peaks")).click();
+            $(AppiumBy.className("android.webkit.WebView")).click();
+            $(AppiumBy.className("android.widget.TextView")).shouldHave(text("Twin Peaks"));
+        });
+    }
+
+
+
+
     @Owner("Bibol Dauren")
     @Test
     @DisplayName("Add language")
