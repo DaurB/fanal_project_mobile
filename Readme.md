@@ -1,7 +1,7 @@
 # Проект по автоматизации тестирования мобильного приложения Wikipedia
 
 <p align="center">
-  <img src="media/icons/wiki_logo.png" alt="Wiki" width="800">
+  <img src="media/icons/wiki_logo.jpg" alt="Wiki" width="800">
 </p>
 
 ##	Содержание
@@ -88,7 +88,7 @@ gradle clean test
 #### Тесты
 
 <p align="center">
-  <img src="media/screen/allure-tests.PNG" alt="allure_tests" width="800">
+  <img src="media/screen/allure_tests.PNG" alt="allure_tests" width="800">
 </p>
 
 #### Графики
@@ -134,7 +134,7 @@ gradle clean test
 - Проверка открытия статьи
 
 <p align="center">
-  <img title="Selenoid Video" src="media/gif/mobile_test_video.gif">
+  <img title="Selenoid Video" src="media/gif/mobile_test.gif">
 </p>
 9
 
