@@ -13,7 +13,7 @@ public interface BrowserstackConfig extends Config {
     String password();
 
     @Key("bs")
-    @DefaultValue("bs://01e17240ba7a175af125b6c9c60f8ed39f1544fa")
+    @DefaultValue("bs://acf4e9f1dc760e262cdd3f0efb5418947b478066")
     String bs();
 
     @Key("device")
