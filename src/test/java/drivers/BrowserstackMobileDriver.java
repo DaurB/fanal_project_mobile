@@ -16,11 +16,12 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
 
     public static URL getBrowserstackUrl() {
         try {
-            return new URL("http://hub.browserstack.com/wd/hub");
+            return new URL("http://hub-cloud.browserstack.com");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
     }
+
 
     @SneakyThrows
     @Override
