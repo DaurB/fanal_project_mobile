@@ -119,6 +119,8 @@ gradle clean test
   <img src="media/screen/jira.PNG" alt="jira" width="800">
 </p>
 
+## Уведомления в Telegram с использованием бота
+
 #### Оповещение о результатах сборки
 
 <p align="center">
