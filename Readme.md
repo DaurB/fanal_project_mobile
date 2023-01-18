@@ -138,5 +138,5 @@ gradle clean test
 <p align="center">
   <img title="Selenoid Video" src="media/gif/mobile_test.gif">
 </p>
-9
+
 
